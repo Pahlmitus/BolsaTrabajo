@@ -1,0 +1,44 @@
+div#user_bar {
+    background-color: #232323;
+    position: sticky;
+    top: 0;
+    height: 30px;
+    width: 100%;
+    color: white;
+    z-index: 9;
+}
+
+div#bienvenida {
+    padding-left: 0.5rem;
+    float: left;
+}
+div#bienvenida::after {
+    clear: both;
+    content: '';
+}
+
+div#user_options {
+    float: right;
+}
+div#user_options::after {
+    clear: both;
+    content: '';
+}
+
+div#user_options ul {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+}
+
+div#user_options ul li {
+    padding-right: 0.5rem;
+}
+
+div#user_options ul ul li:last-child a {
+    color: white;
+}
+
+div#user_options ul ul li:last-child a:hover {
+    font-weight: bold;
+}

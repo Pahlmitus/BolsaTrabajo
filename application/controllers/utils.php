@@ -1,6 +1,6 @@
 <?php
 
-// Comprova si $aguja està al final de $pajar
+// Comprueba si $aguja esta al final de $pajar
 function endsWith($pajar, $aguja) {
 	if (is_array($aguja) == false) {
 		$res = strrpos($pajar, $aguja);
@@ -20,21 +20,39 @@ function endsWith($pajar, $aguja) {
 	}
 }
 
-// Carrega Bootstrap
-function loadBootstrap() {
-        $data['css_files'] = array(
-            'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-        );
-        $data['js_files'] = array(
-                'https://code.jquery.com/jquery-3.2.1.slim.min.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
-                'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
-        );
-        return $data;
+// Carga los estilos principales
+function loadMainStyles($style) {
+        // Si es un array, lo está llamando showIndex
+        // Si es un objeto, lo está llamando showGroceryCRUD
+        if (is_array($style)) {
+                array_push(
+                        $style['css_files'], 
+                        base_url() . 'assets/main/main.css'
+                );
+        } else {
+                $style->css_files['main'] = base_url() . 'assets/main/main.css';
+        }
+        return $style;
 }
 
 
-// Crea i renderitza un objecte CRUD
+// Carga Bootstrap
+function loadBootstrap($style) {
+        array_push(
+                $style['css_files'], 
+                'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+        );
+        array_push(
+                $style['js_files'],
+                'https://code.jquery.com/jquery-3.2.1.slim.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
+                'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
+        );
+        return $style;
+}
+
+
+// Crea y renderiza un objeto CRUD
 function createGroceryCRUD($table, $subject, $relations = NULL) {
     $crud = new Grocery_CRUD();
     $crud->set_theme('bootstrap-v4');
@@ -42,7 +60,7 @@ function createGroceryCRUD($table, $subject, $relations = NULL) {
 
     $crud->set_table($table);
 
-    // Comprova si $subject acaba en vocal per afegir "s" o si acaba en consonant per afegir "es" 
+    // Si $subject acaba en vocal, añade "s" al final. Si acaba en consonante, añade "es". 
     if (endsWith($subject, array("a", "e", "i", "o", "u"))) {
             $crud->set_subject($subject, $subject . "s");
     } else {
@@ -51,7 +69,7 @@ function createGroceryCRUD($table, $subject, $relations = NULL) {
 
     if ($relations != NULL) {
             foreach ($relations as $relation) {
-                    // Comprova si és un array d'arrays
+                    // Comprueba si es un array de arrays
                     if (is_array($relation)) {
                             $crud->set_relation($relation[0], $relation[1], $relation[2]);
                     } else {
@@ -59,7 +77,7 @@ function createGroceryCRUD($table, $subject, $relations = NULL) {
                     }
             }
     }
-    // Torna l'objecte Grocery_CRUD renderitzat:
+    // Devuelve el objeto
     $output = $crud->render();
     
     return $output;
