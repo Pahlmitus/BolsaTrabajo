@@ -14,7 +14,7 @@
 <!-- Barra de herramientas del usuario -->
 <?php if ($this->session->userdata('logged_in') === 1) { ?>
     <div id="user_bar">
-        <div id="bienvenida">Bienvenido/a <b><?php print_r($this->session->userdata('user')); ?></b></div>
+        <div id="bienvenida">Bienvenido/a, <b><?php print_r($this->session->userdata('user_firstname')); ?></b></div>
         <div id="user_options">
             <ul>
                 <li>Mi perfil</li>

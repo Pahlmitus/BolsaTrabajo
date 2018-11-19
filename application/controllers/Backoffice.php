@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+class Backoffice extends CI_Controller {
 
         public function __construct() {
                 parent::__construct();
@@ -17,15 +17,52 @@ class Main extends CI_Controller {
         
         /*** GROCERY CRUDs ***/
         public function users() {
-                $output = createGroceryCRUD('users', 'Usuario', array('user_role_id', 'roles', 'role_id'));
+                $config = (object) array(
+                    'table' => 'users',
+                    'subject' => 'Usuario',
+                    'columns' => array(
+                        'user_id' => 'ID de usuario',
+                        'user_firstname' => 'Nombre',
+                        'user_lastname' => 'Apellidos',
+                        'user_email' => 'Email',
+                        'user_passwd' => 'Contraseña',
+                        'user_role_id' => 'ID de rol'
+                    ),
+                    'relations' => array('user_role_id', 'roles', 'role_id'),
+                    'password_field' => 'user_passwd'
+                );
+                $output = createGroceryCRUD($config);
                 $this->showGroceryCRUD($output);
         }
         public function companies() {
-                $output = createGroceryCRUD('companies', 'Empresa', array('company_user_id', 'users', 'user_id'));
+                $config = (object) array(
+                    'table' => 'companies',
+                    'subject' => 'Empresa',
+                    'columns' => array(
+                        'company_id' => 'ID de empresa',
+                        'company_name' => 'Nombre',
+                        'company_description' => 'Descripción',
+                        'company_phone' => 'Teléfono',
+                        'company_email' => 'Email',
+                        'company_web' => 'Sitio web',
+                        'company_user_id' => 'ID de usuario'
+                    ),
+                    'relations' => array('company_user_id', 'users', 'user_id'),
+                );
+                $output = createGroceryCRUD($config);
                 $this->showGroceryCRUD($output);
         }
         public function roles() {
-                $output = createGroceryCRUD('roles', 'Rol');
+                $config = (object) array(
+                    'table' => 'roles',
+                    'subject' => 'Roles',
+                    'columns' => array(
+                        'role_id' => 'ID de rol',
+                        'role_description' => 'Descripción',
+                        'role_level' => 'Nivel',
+                    ),
+                );
+                $output = createGroceryCRUD($config);
                 $this->showGroceryCRUD($output);
         }
         
