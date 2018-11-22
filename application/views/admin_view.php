@@ -1,0 +1,1 @@
+<p>Vista del administrador</p>
