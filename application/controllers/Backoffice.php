@@ -63,7 +63,7 @@ class Backoffice extends CI_Controller {
                                 $datos = loadMainStyles($datos);
                                 $datos = loadBootstrap($datos);
                                 if ($logged_error == 1) {
-                                    echo '<div class="alert alert-danger" role="alert">
+                                    echo '<div id="login_error" class="alert alert-danger" role="alert">
                                     <b>Error:</b> El email o contraseña son incorrectos.
                                     </div>';
                                 }
@@ -74,7 +74,7 @@ class Backoffice extends CI_Controller {
                             redirect('admin', 'refresh');
                         }
                 } else {
-                        show_404();
+                    show_404();
                 }
         }
         

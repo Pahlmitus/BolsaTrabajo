@@ -25,25 +25,29 @@
     </div> 
 <?php } ?>
 
-<h1>Bolsa de trabajo v1.0</h1>
+<div id="navbar">
+        <a href="<?php echo site_url('/'); ?>">
+                <p id="title">Bolsa de trabajo v1.0</p>
+        </a>
 
-<!-- Acceso a las bases de datos (sólo admin) -->
-<?php if (($this->session->userdata('logged_in') === 1) && ($this->session->userdata('user_role_id') == 1)) { ?>
-    <p id="crudbar">
-        <a href="<?php echo site_url('/admin/'); ?>">Admin</a> |
-        <a href="<?php echo site_url('/admin/users'); ?>">Usuarios</a> |
-        <a href="<?php echo site_url('/admin/companies'); ?>">Empresas</a> |
-        <a href="<?php echo site_url('/admin/roles'); ?>">Roles</a>
-    </p>
-<?php } ?>
+        <!-- Acceso a las bases de datos (sólo admin) -->
+        <?php if (($this->session->userdata('logged_in') === 1) && ($this->session->userdata('user_role_id') == 1)) { ?>
+            <p id="adminbar">
+                <a href="<?php echo site_url('/admin/'); ?>">Admin</a> |
+                <a href="<?php echo site_url('/admin/users'); ?>">Usuarios</a> |
+                <a href="<?php echo site_url('/admin/companies'); ?>">Empresas</a> |
+                <a href="<?php echo site_url('/admin/roles'); ?>">Roles</a>
+            </p>
+        <?php } ?>
 
-<!-- Formulario Login (no loggeados) -->
-<?php if ($this->session->userdata('logged_in') !== 1) { ?>
-    <form action="<?php echo site_url("/login")?>" method="POST">
-        <input type="text" name="user_email" id="user_email" size="18" placeholder="alguien@algo.com" required />
-        <input type="password" name="user_passwd" id="user_passwd" size="18" placeholder="1234, como si lo viera" required />
-        <input type="submit" value="Login" /> 
-    </form>
-<?php } ?>
+        <!-- Formulario Login (no loggeados) -->
+        <?php if ($this->session->userdata('logged_in') !== 1) { ?>
+            <form action="<?php echo site_url("/login")?>" method="POST" id="login_form">
+                <input type="text" name="user_email" id="user_email" size="18" placeholder="alguien@algo.com" required />
+                <input type="password" name="user_passwd" id="user_passwd" size="18" placeholder="1234, como si lo viera" required />
+                <input type="submit" value="Login" /> 
+            </form>
+        <?php } ?>
+</div>
 
-<div class="main">
+<div id="main">

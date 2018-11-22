@@ -21,6 +21,7 @@ div#bienvenida::after {
 
 div#user_options {
     float: right;
+    height: 100%;
 }
 div#user_options::after {
     clear: both;
@@ -37,17 +38,79 @@ div#user_options ul li {
     padding-right: 0.5rem;
 }
 
-div#user_options ul ul li:last-child a {
+div#user_options ul li a {
     color: white;
 }
 
-div#user_options ul ul li:last-child a:hover {
-    font-weight: bold;
+/*** Admin bar ***/
+
+p#adminbar {
+    padding-right: 1rem;
+}
+
+p#adminbar a {
+    color: white;
 }
 
 
 /***** Contenido principal *****/
 
-div.main {
-    display: none;
+div#main {
+    margin: 0 10%;
+}
+
+/*** Login error ***/
+
+div#login_error {
+    margin-bottom: 0;
+}
+
+/***** NAVBAR *****/
+
+div#navbar {
+    background-color: #005594;
+    color: white;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+p#title {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+form#login_form {
+    padding-right: 1rem;
+}
+
+
+
+/***** FOOTER *****/
+
+footer#footer {
+    background-color: #005594;
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 2.5rem 0;
+    margin-top: 4rem;
+}
+
+footer#footer div#social {
+    font-size: 2rem;
+}
+
+
+/***** Ofertas *****/
+
+div.offer {
+    /* henlo */
 }

@@ -56,7 +56,7 @@ class Admin extends CI_Controller {
         public function roles() {
                 $config = (object) array(
                     'table' => 'roles',
-                    'subject' => 'Roles',
+                    'subject' => 'Rol',
                     'columns' => array(
                         'role_id' => 'ID de rol',
                         'role_description' => 'Descripción',
