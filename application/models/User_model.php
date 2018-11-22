@@ -1,12 +1,14 @@
 <?php
 
 class User_model extends CI_Model {
+
     private $user_id;
     private $user_firstname;
     private $user_lastname;
     private $email;
     private $passwd;
     private $user_role_id;
+    
     public function __construct() {
         parent::__construct();
     }

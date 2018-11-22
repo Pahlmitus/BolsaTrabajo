@@ -1,3 +1,5 @@
+/* Barra de herramientas del usuario */
+
 div#user_bar {
     background-color: #232323;
     position: sticky;
@@ -41,4 +43,11 @@ div#user_options ul ul li:last-child a {
 
 div#user_options ul ul li:last-child a:hover {
     font-weight: bold;
+}
+
+
+/***** Contenido principal *****/
+
+div.main {
+    display: none;
 }

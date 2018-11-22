@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
                 parent::__construct();
                 $this->load->database();
                 $this->load->helper('url');
+                $this->load->library('session');
                 $this->load->library('Grocery_CRUD');
                 include_once('utils.php');
         }

@@ -6,6 +6,7 @@ class Backoffice extends CI_Controller {
                 parent::__construct();
                 $this->load->database();
                 $this->load->helper('url');
+                $this->load->library('session');
                 $this->load->library('Grocery_CRUD');
                 include_once('utils.php');
         }
@@ -33,39 +34,45 @@ class Backoffice extends CI_Controller {
                     $this->session->user_role_id = $user[0]->user_role_id;
 
                     // Muestra la página principal
-                    $this->showIndex();
+                    //$this->showIndex();
+                    redirect('/', 'refresh');
 
                 } else {
                     // Muestra "Login incorrecto" y la página principal
-                    $this->showIndex(1);
+                    $this->session->loggin_err = 1;
+                    redirect('/', 'refresh');
                 }
             } else {
-                $this->showIndex();
+                redirect('/', 'refresh');
             }
         }
         
         public function logout() {
             if ($this->session->logged_in !== 0) {
                 $this->session->logged_in = 0;
-                $this->showIndex();
+                redirect('/', 'refresh');
             } else {
-                $this->showIndex();
+                redirect('/', 'refresh');
             }
         }
 
         public function showIndex($logged_error = NULL) {
                 if ($this->session->logged_in !== 0) {
-                        $datos = array('css_files' => array(), 'js_files' => array());
-                        $datos = loadMainStyles($datos);
-                        $datos = loadBootstrap($datos);
-                        if ($logged_error == 1) {
-                            echo '<div class="alert alert-danger" role="alert">
-                            <b>Error:</b> El email o contraseña son incorrectos.
-                            </div>';
+                        if ($this->session->user_role_id !== 1) {
+                                $datos = array('css_files' => array(), 'js_files' => array());
+                                $datos = loadMainStyles($datos);
+                                $datos = loadBootstrap($datos);
+                                if ($logged_error == 1) {
+                                    echo '<div class="alert alert-danger" role="alert">
+                                    <b>Error:</b> El email o contraseña son incorrectos.
+                                    </div>';
+                                }
+                                $this->load->view('templates/header', $datos);
+                                $this->load->view('back_view', $datos);
+                                $this->load->view('templates/footer', $datos);
+                        } else {
+                            redirect('admin', 'refresh');
                         }
-                        $this->load->view('templates/header', $datos);
-                        $this->load->view('back_view', $datos);
-                        $this->load->view('templates/footer', $datos);
                 } else {
                         show_404();
                 }

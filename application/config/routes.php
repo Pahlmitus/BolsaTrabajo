@@ -53,12 +53,20 @@ $route['default_controller'] = 'frontoffice';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-// TEMPORAL
+// ADMIN
 $route['admin'] = 'admin';
 $route['admin/(:any)'] = 'admin/$1';
 $route['admin/(:any)/(:any)'] = 'admin/$1/$2';
 $route['admin/(:any)/(:any)/(:any)'] = 'admin/$1/$2/$3';
 
-// TEMPORAL TAMBIÉN (Cambiar con admin)
+// FRONT
 $route['frontoffice'] = 'frontoffice';
 $route['frontoffice/(:any)'] = 'frontoffice/$1';
+
+// BACK
+$route['backoffice'] = 'backoffice';
+$route['backoffice/(:any)'] = 'backoffice/$1';
+
+// Login y logout
+$route['login'] = 'backoffice/login';
+$route['logout'] = 'backoffice/logout';
