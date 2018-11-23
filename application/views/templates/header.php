@@ -45,7 +45,8 @@
             <form action="<?php echo site_url("/login")?>" method="POST" id="login_form">
                 <input type="text" name="user_email" id="user_email" size="18" placeholder="alguien@algo.com" required />
                 <input type="password" name="user_passwd" id="user_passwd" size="18" placeholder="1234, como si lo viera" required />
-                <input type="submit" value="Login" /> 
+                <input type="submit" value="Entrar" />
+                <span id="register">¿Todavía no tienes cuenta? <a href="<?php echo site_url('/register'); ?>">Regístrarte</a></span>
             </form>
         <?php } ?>
 </div>

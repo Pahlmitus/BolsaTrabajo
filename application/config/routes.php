@@ -70,3 +70,6 @@ $route['backoffice/(:any)'] = 'backoffice/$1';
 // Login y logout
 $route['login'] = 'backoffice/login';
 $route['logout'] = 'backoffice/logout';
+
+// Registro
+$route['register'] = 'frontoffice/register';

@@ -19,10 +19,12 @@ class Frontoffice extends CI_Controller {
                 $datos = array('css_files' => array(), 'js_files' => array());
                 $datos = loadMainStyles($datos);
                 $datos = loadBootstrap($datos);
-                if ($this->session->loggin_err == 1) {
+
+                if ($this->session->loggin_err == 1) { 
                         $this->session->loggin_err = 0;
-                        echo '<div class="alert alert-danger" role="alert">
-                        <b>Error:</b> El email o contraseña son incorrectos.
+                        echo '<div class="alert alert-danger" role="alert" id="login_error">
+                        <p>!</p>
+                        <b>Error:</b> El email o la contraseña son incorrectos.
                         </div>';
                 }
                 
@@ -33,6 +35,17 @@ class Frontoffice extends CI_Controller {
                 // Carga la vista
                 $this->load->view('templates/header', $datos);
                 $this->load->view('front_view', $datos);
+                $this->load->view('templates/footer', $datos);
+        }
+
+        public function register() {
+                $datos = array('css_files' => array(), 'js_files' => array());
+                $datos = loadMainStyles($datos);
+                $datos = loadBootstrap($datos);
+
+                // Carga la vista
+                $this->load->view('templates/header', $datos);
+                $this->load->view('register_view', $datos);
                 $this->load->view('templates/footer', $datos);
         }
 }
