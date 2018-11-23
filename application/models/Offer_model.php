@@ -12,7 +12,8 @@ class Offer_model extends CI_Model {
     }
 
     public function getAll() {
-        $query = $this->db->get('offers');
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id`;');
         return $query->result();
     }
+    
 }

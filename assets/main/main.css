@@ -1,4 +1,4 @@
-/* Barra de herramientas del usuario */
+/***** BARRA DE HERRAMIENTAS DEL USUARIO *****/
 
 div#user_bar {
     background-color: #232323;
@@ -10,6 +10,7 @@ div#user_bar {
     z-index: 9;
 }
 
+/* Bienvenido, $nombre */
 div#bienvenida {
     padding-left: 0.5rem;
     float: left;
@@ -19,6 +20,7 @@ div#bienvenida::after {
     content: '';
 }
 
+/* Opciones (Perfil, cerrar sesión...) */
 div#user_options {
     float: right;
     height: 100%;
@@ -27,27 +29,24 @@ div#user_options::after {
     clear: both;
     content: '';
 }
-
 div#user_options ul {
     display: flex;
     flex-flow: row nowrap;
     list-style: none;
 }
-
 div#user_options ul li {
     padding-right: 0.5rem;
 }
-
 div#user_options ul li a {
     color: white;
 }
 
-/*** Admin bar ***/
+
+/***** ADMIN BAR *****/
 
 p#adminbar {
     padding-right: 1rem;
 }
-
 p#adminbar a {
     color: white;
 }
@@ -55,9 +54,13 @@ p#adminbar a {
 
 /***** Contenido principal *****/
 
+body {
+    background-color: #f1f1f1 !important;
+}
 div#main {
     margin: 0 10%;
 }
+
 
 /*** Login error ***/
 
@@ -65,8 +68,10 @@ div#login_error {
     margin-bottom: 0;
 }
 
+
 /***** NAVBAR *****/
 
+/* General */
 div#navbar {
     background-color: #005594;
     color: white;
@@ -79,6 +84,7 @@ div#navbar {
     width: 100%;
 }
 
+/* Bolsa de trabajo v1.0 */
 p#title {
     color: white;
     font-size: 2rem;
@@ -86,6 +92,7 @@ p#title {
     padding-left: 1rem;
 }
 
+/* Login form */
 form#login_form {
     padding-right: 1rem;
 }
@@ -103,14 +110,59 @@ footer#footer {
     padding: 2.5rem 0;
     margin-top: 4rem;
 }
-
 footer#footer div#social {
     font-size: 2rem;
 }
 
 
-/***** Ofertas *****/
+/***** OFERTAS *****/
 
+/* General */
 div.offer {
-    /* henlo */
+    background-color: white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 5rem;
+    border-top: 2px solid #ebe8e8;
+    border-bottom: 2px solid #ebe8e8;
+}
+
+div.offer:hover {
+    background-color:#f2f5f9;
+}
+
+/* Logo */
+div.offer img.company_logo {
+    float: right;
+    max-height: 5rem;
+    max-width: 15rem;
+}
+div.offer img.company_logo::after {
+    clear: both;
+    content: ' ';
+}
+
+/* Título */
+div.offer p.offer_title {
+    font-size: 1.5rem;
+    color: #0b90f2;
+    font-weight: 600;
+}
+
+/* Características */
+div.offer div.offer_tags {
+    display: flex;
+    flex-flow: row nowrap;
+    color: #999;
+    font-size: 1.2rem;
+}
+div.offer div.offer_tags p {
+    margin-right: 0.5rem;
+}
+div.offer div.offer_description {
+    color: #555;
+}
+div.offer div.offer_description p {
+    margin-bottom: 0;
 }

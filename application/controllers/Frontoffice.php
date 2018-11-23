@@ -25,6 +25,7 @@ class Frontoffice extends CI_Controller {
                         <b>Error:</b> El email o contraseña son incorrectos.
                         </div>';
                 }
+                
                 // Muestra las últimas ofertas
                 $this->load->model('Offer_model');
                 $datos['offers'] = $this->Offer_model->getAll();
@@ -33,14 +34,5 @@ class Frontoffice extends CI_Controller {
                 $this->load->view('templates/header', $datos);
                 $this->load->view('front_view', $datos);
                 $this->load->view('templates/footer', $datos);
-        }
-
-        public function offers() {
-                // Under construction...
-                /*
-
-                        :)
-
-                */
         }
 }

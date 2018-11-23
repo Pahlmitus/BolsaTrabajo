@@ -22,7 +22,6 @@ class Admin extends CI_Controller {
                     'table' => 'users',
                     'subject' => 'Usuario',
                     'columns' => array(
-                        'user_id' => 'ID de usuario',
                         'user_firstname' => 'Nombre',
                         'user_lastname' => 'Apellidos',
                         'user_email' => 'Email',
@@ -40,15 +39,19 @@ class Admin extends CI_Controller {
                     'table' => 'companies',
                     'subject' => 'Empresa',
                     'columns' => array(
-                        'company_id' => 'ID de empresa',
                         'company_name' => 'Nombre',
                         'company_description' => 'Descripción',
+                        'company_logo' => 'Logotipo',
+                        'company_cif' => 'CIF',
+                        'company_city' => 'Ciudad',
+                        'company_state' => 'País/Estado',
                         'company_phone' => 'Teléfono',
                         'company_email' => 'Email',
                         'company_web' => 'Sitio web',
-                        'company_user_id' => 'ID de usuario'
+                        'company_user_id' => 'ID de propietario'
                     ),
                     'relations' => array('company_user_id', 'users', 'user_id'),
+                    'image_field' => array('company_logo', 'assets/company_logos/')
                 );
                 $output = createGroceryCRUD($config);
                 $this->showGroceryCRUD($output);
@@ -58,7 +61,6 @@ class Admin extends CI_Controller {
                     'table' => 'roles',
                     'subject' => 'Rol',
                     'columns' => array(
-                        'role_id' => 'ID de rol',
                         'role_description' => 'Descripción',
                         'role_level' => 'Nivel',
                     ),

@@ -97,6 +97,12 @@ function createGroceryCRUD($config) {
                 </script>";
         }
 
+        // Comprueba si hay un campo imagen
+        if (isset($config->image_field)) {
+                // [0]: nombre del campo; [1]: carpeta donde guardar los archivos subidos
+                $crud->set_field_upload($config->image_field[0], $config->image_field[1], 'jpg|jpeg|png');
+        }
+
         // Devuelve el objeto
         $output = $crud->render();
         
