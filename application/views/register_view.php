@@ -3,8 +3,8 @@
 
         <div id="register_options_transparency">
                 <div id="register_options">
-                        <div>Soy un trabajador y busco empresa.</div>
-                        <div>Soy un empresario y busco trabajadores.</div>
+                        <div><p>Soy un trabajador y busco empresa.</p></div>
+                        <div><p>Soy un empresario y busco trabajadores.</p></div>
                 </div>
         </div>
 </div>

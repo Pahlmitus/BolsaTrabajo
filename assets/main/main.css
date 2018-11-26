@@ -140,12 +140,11 @@ div#register_content {
 
 div#register_options {
     display: flex;
-    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
     border: 1px solid red;
     height: 30rem;
-    position: relative; 
+    position: relative;
 }
 
 div#register_options::after {
@@ -161,9 +160,20 @@ div#register_options::after {
   }
 
 div#register_options div {
+    height: 100%;
     border: 1px solid blue;
     font-size: 2em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    
 }
+div#register_options div p {
+
+}
+
+
 
 /***** FOOTER *****/
 
