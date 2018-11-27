@@ -132,47 +132,61 @@ div#login_error p::after {
 /***** REGISTRO (vista) *****/
 
 div#register_content {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+}
+div#register_content h2 {
+    margin-bottom: 2rem;
 }
 
 div#register_options {
     display: flex;
+    flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
-    border: 1px solid red;
+    justify-content: space-evenly;
     height: 30rem;
-    position: relative;
 }
 
-div#register_options::after {
-    content: "";
-    background: url('https://loinhacviet.info/images/employee-clipart-black-and-white-13.jpg') no-repeat center;
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-  }
-
-div#register_options div {
-    height: 100%;
-    border: 1px solid blue;
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: white;
-    
-}
+/* Textos */
 div#register_options div p {
-
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
 }
 
+/* Trabajador / Empresario */
+div#reg_opt_trabajador {
+    background-image: url('images/trabajador.png');
+}
+div#reg_opt_empresario {
+    background-image: url('images/empresario.png');
+}
+div#reg_opt_trabajador, div#reg_opt_empresario {
+    width: 50%;
+    height: 100%;
+    background-color: #005594;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    transition: background-color 0.1s, width 0.5s ease-in-out;
+    border: 1px solid #f1f1f1;
+}
+
+div#reg_opt_trabajador:hover {
+    background-color: #0b90f2;
+    cursor: pointer;
+}
+div#reg_opt_empresario:hover {
+    background-color: #0b90f2;
+    cursor: pointer;
+}
+
+/* Formularios */
+
+form#reg_opt_trabajador_form, form#reg_opt_empresario_form {
+    color: white;
+    display: none;
+}
 
 
 /***** FOOTER *****/

@@ -30,8 +30,13 @@ function loadMainStyles($datos) {
                         $datos['css_files'], 
                         base_url() . 'assets/main/main.css'
                 );
+                array_push(
+                        $datos['js_files'], 
+                        base_url() . 'assets/main/main.js'
+                );
         } else {
                 $datos->css_files['main'] = base_url() . 'assets/main/main.css';
+                $datos->js_files['main'] = base_url() . 'assets/main/main.js';
         }
         return $datos;
 }

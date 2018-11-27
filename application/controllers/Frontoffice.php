@@ -39,13 +39,19 @@ class Frontoffice extends CI_Controller {
         }
 
         public function register() {
-                $datos = array('css_files' => array(), 'js_files' => array());
-                $datos = loadMainStyles($datos);
-                $datos = loadBootstrap($datos);
+                // Si ya está registrado, carga el index
+                if ($this->session->logged_in !== 1) {
+                        $datos = array('css_files' => array(), 'js_files' => array());
+                        $datos = loadMainStyles($datos);
+                        $datos = loadBootstrap($datos);
 
-                // Carga la vista
-                $this->load->view('templates/header', $datos);
-                $this->load->view('register_view', $datos);
-                $this->load->view('templates/footer', $datos);
+                        // Carga la vista
+                        $this->load->view('templates/header', $datos);
+                        $this->load->view('register_view', $datos);
+                        $this->load->view('templates/footer', $datos);
+                } else {
+                        //$this->index();
+                        redirect('/', 'refresh');
+                }
         }
 }
