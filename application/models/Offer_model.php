@@ -15,5 +15,10 @@ class Offer_model extends CI_Model {
         $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id`;');
         return $query->result();
     }
+
+    public function getLastFive() {
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` LIMIT 5;');
+        return $query->result();
+    }
     
 }

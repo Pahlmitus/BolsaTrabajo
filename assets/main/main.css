@@ -52,13 +52,16 @@ p#adminbar a {
 }
 
 
-/***** Contenido principal *****/
+/***** CONTENEDOR PRINCIPAL *****/
 
 body {
     background-color: #f1f1f1 !important;
 }
 div#main {
-    margin: 0 10%;
+    margin: 0 5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 
@@ -178,7 +181,6 @@ div#reg_opt_trabajador, div#reg_opt_empresario {
     transition: background-color 0.1s, width 0.5s ease-in-out;
     border: 1px solid #f1f1f1;
 }
-
 div#reg_opt_trabajador:hover {
     background-color: #0b90f2;
     cursor: pointer;
@@ -219,7 +221,7 @@ footer#footer div#social {
 }
 
 
-/***** OFERTAS *****/
+/***** OFERTAS (diseño individual) *****/
 
 /* General */
 div.offer {
@@ -268,4 +270,43 @@ div.offer div.offer_description {
 }
 div.offer div.offer_description p {
     margin-bottom: 0;
+}
+
+
+/***** BARRA DE BÚSQUEDA PRINCIPAL *****/
+div#search_sidebar {
+    flex: 3;
+    background-color: white;
+    margin-right: 2rem;
+    padding: 2rem;
+}
+
+/* Contenedor del cuadro de búsqueda */
+div#search_bar {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* Texto de búsqueda */
+input#search_textbox {
+    flex: 11;
+}
+
+/* Botón "buscar" (icono) */
+button#search_icon {
+    flex: 1;
+}
+button#search_icon i {
+    padding: 0.5rem 0;
+}
+
+/* Etiquetas de búsqueda */
+div#search_conditions button {
+    text-align: left;
+}
+
+
+/***** CONTENEDOR DE OFERTAS *****/
+div#last_offers {
+    flex: 7;
 }

@@ -30,7 +30,7 @@ class Frontoffice extends CI_Controller {
                 
                 // Muestra las últimas ofertas
                 $this->load->model('Offer_model');
-                $datos['offers'] = $this->Offer_model->getAll();
+                $datos['offers'] = $this->Offer_model->getLastFive();
 
                 // Carga la vista
                 $this->load->view('templates/header', $datos);
