@@ -73,3 +73,5 @@ $route['logout'] = 'backoffice/logout';
 
 // Registro
 $route['register'] = 'frontoffice/register';
+$route['register/trabajador'] = 'backoffice/registerTrabajador';
+$route['register/empresario'] = 'backoffice/registerEmpresario';

@@ -74,7 +74,7 @@ div#navbar {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     width: 100%;
 }
 
@@ -134,16 +134,23 @@ div#login_error p::after {
 div#register_content {
     text-align: center;
 }
+
+/* Título y descripción */
 div#register_content h2 {
     margin-bottom: 2rem;
 }
+div#register_content p {
+    text-align: left;
+}
 
+/* Opciones */
 div#register_options {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-evenly;
     height: 30rem;
+    margin-top: 1rem;
 }
 
 /* Textos */
@@ -182,10 +189,17 @@ div#reg_opt_empresario:hover {
 }
 
 /* Formularios */
-
 form#reg_opt_trabajador_form, form#reg_opt_empresario_form {
     color: white;
     display: none;
+}
+form div.form-group {
+    flex: 1;
+    text-align: left;
+    max-width: 45%;
+}
+form div.form-group:last-child {
+    text-align: right;
 }
 
 

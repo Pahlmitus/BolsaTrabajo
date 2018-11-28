@@ -48,12 +48,40 @@ class Backoffice extends CI_Controller {
         }
         
         public function logout() {
-            if ($this->session->logged_in !== 0) {
-                $this->session->logged_in = 0;
-                redirect('/', 'refresh');
-            } else {
-                redirect('/', 'refresh');
-            }
+                if ($this->session->logged_in !== 0) {
+                        $this->session->logged_in = 0;
+                        redirect('/', 'refresh');
+                } else {
+                        redirect('/', 'refresh');
+                }
+        }
+
+        /*** REGISTRO (despúes de introducir los datos en Frontoffice) ***/
+
+        public function registerTrabajador() {
+                // Quitamos el modo debug de las bases de datos para que no nos dé problemas
+                $db_debug = $this->db->db_debug;
+                $this->db->db_debug = FALSE;
+                
+                $trabajador = array(
+                        $this->input->post('trabajador_firstname'),
+                        $this->input->post('trabajador_lastname'),
+                        $this->input->post('trabajador_email'),
+                        $this->input->post('trabajador_passwd')
+                );
+                $sql = "INSERT INTO users (`user_firstname`, `user_lastname`, `user_email`, `user_passwd`, `user_role_id`)
+                VALUES (?, ?, ?, ?, 2);";
+                if ($this->db->query($sql, $trabajador)) {
+                    redirect('/', 'refresh');
+                }
+                $error = $this->db->error();
+                if ($error) {
+                    redirect('/register?err=1', 'refresh');
+                }
+                
+                // ...y lo dejamos como estaba
+                $this->db->db_debug = $db_debug;
+  
         }
 
         public function showIndex($logged_error = NULL) {
