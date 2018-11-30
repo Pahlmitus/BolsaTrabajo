@@ -17,9 +17,28 @@
         <div id="bienvenida">Bienvenido/a, <b><?php print_r($this->session->userdata('user_firstname')); ?></b></div>
         <div id="user_options">
             <ul>
+            <!-- Los administradores tienen acceso a las bases de datos -->
+            <?php if ($this->session->userdata('user_role_id') == 1) { ?>
+                <li><a href="<?php echo site_url('/admin/'); ?>">Admin</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/users'); ?>">Usuarios</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/companies'); ?>">Empresas</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/offers'); ?>">Ofertas</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/candidates'); ?>">Candidatos</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/studies'); ?>">Estudios</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/admin/roles'); ?>">Roles</a></li>
+                <li> | </li>
+                <li><a href="<?php echo site_url('/logout'); ?>">Cerrar sesión</a></li>
+            <?php } else { ?>
                 <li><a href="<?php echo site_url('/backoffice'); ?>">Mi perfil</a></li>
                 <li> | </li>
                 <li><a href="<?php echo site_url('/logout'); ?>">Cerrar sesión</a></li>
+            <?php } ?>
             </ul>
         </div>
     </div> 
@@ -29,16 +48,6 @@
         <a href="<?php echo site_url('/'); ?>">
                 <p id="title">Bolsa de trabajo v1.0</p>
         </a>
-
-        <!-- Acceso a las bases de datos (sólo admin) -->
-        <?php if (($this->session->userdata('logged_in') === 1) && ($this->session->userdata('user_role_id') == 1)) { ?>
-            <p id="adminbar">
-                <a href="<?php echo site_url('/admin/'); ?>">Admin</a> |
-                <a href="<?php echo site_url('/admin/users'); ?>">Usuarios</a> |
-                <a href="<?php echo site_url('/admin/companies'); ?>">Empresas</a> |
-                <a href="<?php echo site_url('/admin/roles'); ?>">Roles</a>
-            </p>
-        <?php } ?>
 
         <!-- Formulario Login (no loggeados) -->
         <?php if ($this->session->userdata('logged_in') !== 1) { ?>

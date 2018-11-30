@@ -15,7 +15,6 @@ class Admin extends CI_Controller {
                 $this->showAdmin();
         }
         
-        
         /*** GROCERY CRUDs ***/
         public function users() {
                 $config = (object) array(
@@ -68,8 +67,7 @@ class Admin extends CI_Controller {
             $output = createGroceryCRUD($config);
             $this->showGroceryCRUD($output);
         }
-
-        public function candidatos() {
+        public function candidates() {
             $config = (object) array(
                 'table' => 'candidates',
                 'subject' => 'Candidato',
@@ -91,7 +89,36 @@ class Admin extends CI_Controller {
             $output = createGroceryCRUD($config);
             $this->showGroceryCRUD($output);
         }
-
+        public function studies() {
+            $config = (object) array(
+                'table' => 'studies',
+                'subject' => 'Nivel',
+                'columns' => array(
+                    'studies_level' => 'Nivel de estudios',
+                    'studies_description' => 'Descripción'
+                )
+            );
+            $output = createGroceryCRUD($config);
+            $this->showGroceryCRUD($output);
+        }
+        public function offers() {
+            $config = (object) array(
+                'table' => 'offers',
+                'subject' => 'Oferta',
+                'columns' => array(
+                    'offer_company_id' => 'ID de empresa',
+                    'offer_date' => 'Fecha',
+                    'offer_title' => 'Título',
+                    'offer_description' => 'Descripción',
+                    'offer_location' => 'Ubicación'
+                ),
+                'relations' => array(
+                    array('offer_company_id', 'companies', 'company_id')
+                )
+            );
+            $output = createGroceryCRUD($config);
+            $this->showGroceryCRUD($output);
+        }
         
         /*** Funciones que no pueden ir en utils.php porque utilizan objetos ***/
         function showGroceryCRUD($output) {

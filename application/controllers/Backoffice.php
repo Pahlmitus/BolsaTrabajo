@@ -12,7 +12,12 @@ class Backoffice extends CI_Controller {
         }
         
         public function index() {
-            $this->showIndex();
+            // Los administradores no tienen página personal, sólo la vista principal del panel de control
+            if (($this->session->userdata('logged_in') === 1) && ($this->session->userdata('user_role_id') == 1)) {
+                redirect('/admin', 'refresh');
+            } else {
+                $this->showIndex();
+            }
         }
 
         /*** LOGIN Y LOGOUT ***/
