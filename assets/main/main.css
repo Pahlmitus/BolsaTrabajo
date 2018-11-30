@@ -195,12 +195,12 @@ form#reg_opt_trabajador_form, form#reg_opt_empresario_form {
     color: white;
     display: none;
 }
-form div.form-group {
+div#register_options div form div.form-group {
     flex: 1;
     text-align: left;
     max-width: 45%;
 }
-form div.form-group:last-child {
+div#register_options div form div.form-group:last-child {
     text-align: right;
 }
 
@@ -275,7 +275,7 @@ div.offer div.offer_description p {
 
 /***** BARRA DE BÚSQUEDA PRINCIPAL *****/
 div#search_sidebar {
-    flex: 3;
+    flex: 2;
     background-color: white;
     margin-right: 2rem;
     padding: 2rem;
@@ -303,6 +303,14 @@ button#search_icon i {
 /* Etiquetas de búsqueda */
 div#search_conditions button {
     text-align: left;
+}
+
+/* Provincia */
+div#search_provincia button:first-child {
+    margin-top: 0.5rem;
+}
+div#search_provincia button:last-child {
+    margin-bottom: 0.5rem;
 }
 
 

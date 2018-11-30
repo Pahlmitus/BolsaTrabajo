@@ -1,7 +1,7 @@
 <div id="search_sidebar">
     <h4>Buscar</h4>
     <div id="search_bar">
-        <input type="text" class="form-control" id="search_textbox" name="search_textbox" placeholder="Programador web en Gandía..." />
+        <input type="text" class="form-control" id="search_textbox" name="search_textbox" placeholder="programador Gandía..." />
         <button id="search_icon"><i class="icon fa fa-search"></i></button>
     </div>
     <br />

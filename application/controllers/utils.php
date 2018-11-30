@@ -84,8 +84,10 @@ function createGroceryCRUD($config) {
                 foreach ($config->relations as $relation) {
                         // Comprueba si es un array de arrays
                         if (is_array($relation)) {
+                                // [0]: campo en esta tabla; [1]: la otra tabla; [2]: campo en la otra tabla
                                 $crud->set_relation($relation[0], $relation[1], $relation[2]);
                         } else {
+                                // Igual que el anterior
                                 $crud->set_relation($config->relations[0], $config->relations[1], $config->relations[2]);
                         }
                 }
@@ -102,10 +104,16 @@ function createGroceryCRUD($config) {
                 </script>";
         }
 
-        // Comprueba si hay un campo imagen
+        // Comprueba si hay un campo "subit imagen"
         if (isset($config->image_field)) {
                 // [0]: nombre del campo; [1]: carpeta donde guardar los archivos subidos
                 $crud->set_field_upload($config->image_field[0], $config->image_field[1], 'jpg|jpeg|png');
+        }
+
+        // Comprueba si hay un campo "subir PDF"
+        if (isset($config->pdf_field)) {
+                // [0]: nombre del campo; [1]: carpeta donde guardar los archivos subidos
+                $crud->set_field_upload($config->pdf_field[0], $config->pdf_field[1], 'pdf');
         }
 
         // Devuelve el objeto

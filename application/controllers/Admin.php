@@ -57,16 +57,39 @@ class Admin extends CI_Controller {
                 $this->showGroceryCRUD($output);
         }
         public function roles() {
-                $config = (object) array(
-                    'table' => 'roles',
-                    'subject' => 'Rol',
-                    'columns' => array(
-                        'role_description' => 'Descripción',
-                        'role_level' => 'Nivel',
-                    ),
-                );
-                $output = createGroceryCRUD($config);
-                $this->showGroceryCRUD($output);
+            $config = (object) array(
+                'table' => 'roles',
+                'subject' => 'Rol',
+                'columns' => array(
+                    'role_description' => 'Descripción',
+                    'role_level' => 'Nivel'
+                )
+            );
+            $output = createGroceryCRUD($config);
+            $this->showGroceryCRUD($output);
+        }
+
+        public function candidatos() {
+            $config = (object) array(
+                'table' => 'candidates',
+                'subject' => 'Candidato',
+                'columns' => array(
+                    'candidate_studies_id' => 'ID de estudios',
+                    'candidate_birthdate' => 'Fecha de nacimiento',
+                    'candidate_phone' => 'Teléfono',
+                    'candidate_photo' => 'Foto',
+                    'candidate_cv' => 'Currículum',
+                    'candidate_user_id' => 'ID de usuario'
+                ),
+                'relations' => array(
+                    array('candidate_studies_id', 'studies', 'studies_id'),
+                    array('candidate_user_id', 'users', 'user_id')
+                ),
+                'image_field' => array('candidate_photo', 'assets/candidate_photos/'),
+                'pdf_field' => array('candidate_cv', 'assets/candidate_cvs/')
+            );
+            $output = createGroceryCRUD($config);
+            $this->showGroceryCRUD($output);
         }
 
         
