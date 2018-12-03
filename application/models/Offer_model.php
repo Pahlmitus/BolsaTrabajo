@@ -21,4 +21,21 @@ class Offer_model extends CI_Model {
         return $query->result();
     }
     
+    public function getByTag($tag) {
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` AND `offer_tags` LIKE "%' . $tag . '%";');
+        return $query->result();
+    }
+
+    public function searchAll($search) {
+        $query = $this->db->query("SELECT * FROM `offers`, `companies` WHERE (`offer_company_id` = `company_id`)
+         AND (
+            (`offer_title` LIKE '%". $search ."%') 
+            OR (`offer_description` LIKE '%". $search ."%') 
+            OR (`offer_location` LIKE '%". $search ."%') 
+            OR (`offer_tags` LIKE '%". $search ."%')
+            OR (`company_name` LIKE '%". $search ."%')
+            )
+         ");
+         return $query->result();
+    }
 }

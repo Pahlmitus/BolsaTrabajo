@@ -256,13 +256,13 @@ div.offer p.offer_title {
 }
 
 /* Características */
-div.offer div.offer_tags {
+div.offer div.offer_info {
     display: flex;
     flex-flow: row nowrap;
     color: #999;
     font-size: 1.2rem;
 }
-div.offer div.offer_tags p {
+div.offer div.offer_info p {
     margin-right: 0.5rem;
 }
 div.offer div.offer_description {
@@ -270,6 +270,13 @@ div.offer div.offer_description {
 }
 div.offer div.offer_description p {
     margin-bottom: 0;
+}
+
+/* Etiquetas */
+div.offer div.offer_tags {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #999;
 }
 
 

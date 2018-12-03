@@ -62,6 +62,12 @@ $route['admin/(:any)/(:any)/(:any)'] = 'admin/$1/$2/$3';
 // FRONT
 $route['frontoffice'] = 'frontoffice';
 $route['frontoffice/(:any)'] = 'frontoffice/$1';
+    /* Buscar */
+    $route['search'] = 'frontoffice/search';
+    $route['search/(:any)'] = 'frontoffice/search/$1';
+    /* Mostrar por etiqueta */
+    $route['tag'] = 'frontoffice/tag';
+    $route['tag/(:any)'] = 'frontoffice/tag/$1';
 
 // BACK
 $route['backoffice'] = 'backoffice';

@@ -1,3 +1,5 @@
+// Función visual de la vista de registro
+// Al hacer click en trabajador o empresario, el contenedor con la opción elegida se agranda y el otro se reduce.
 function switchRegOpt(chosen) {
     switch (chosen) {
         case 'trabajador':
@@ -31,7 +33,16 @@ function switchRegOpt(chosen) {
     }, 500);
 }
 
+// Mostrar la contraseña en el formulario de registro
 function showPass(pass) {
     passField = document.getElementById(pass);
     passField.type === "password" ? passField.type = "text" : passField.type = "password";
+}
+
+function search(base_url) {
+    search_textbox = document.getElementById('search_textbox');
+    query = search_textbox.value;
+    fullQuery = base_url + "search/" + query;
+    window.location.replace(fullQuery);
+    search_textbox.value = query;
 }

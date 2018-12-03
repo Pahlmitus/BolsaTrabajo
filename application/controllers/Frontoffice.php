@@ -38,6 +38,55 @@ class Frontoffice extends CI_Controller {
                 $this->load->view('templates/footer', $datos);
         }
 
+        // BUSCAR
+        public function search($search = "") {
+                $datos = array('css_files' => array(), 'js_files' => array());
+                $datos = loadMainStyles($datos);
+                $datos = loadBootstrap($datos);
+
+                if ($this->session->loggin_err == 1) { 
+                        $this->session->loggin_err = 0;
+                        echo '<div class="alert alert-danger" role="alert" id="login_error">
+                        <p>!</p>
+                        <b>Error:</b> El email o la contraseña son incorrectos.
+                        </div>';
+                }
+                
+                // Carga las ofertas
+                $this->load->model('Offer_model');
+                $datos['offers'] = $this->Offer_model->searchAll($search);
+
+                // Carga la vista
+                $this->load->view('templates/header', $datos);
+                $this->load->view('front_view', $datos);
+                $this->load->view('templates/footer', $datos);
+        }
+
+        // MOSTRAR POR ETIQUETA(S)
+        public function tag($tag = "") {
+                $datos = array('css_files' => array(), 'js_files' => array());
+                $datos = loadMainStyles($datos);
+                $datos = loadBootstrap($datos);
+
+                if ($this->session->loggin_err == 1) { 
+                        $this->session->loggin_err = 0;
+                        echo '<div class="alert alert-danger" role="alert" id="login_error">
+                        <p>!</p>
+                        <b>Error:</b> El email o la contraseña son incorrectos.
+                        </div>';
+                }
+                
+                // Carga las ofertas
+                $this->load->model('Offer_model');
+                $datos['offers'] = $this->Offer_model->getByTag($tag);
+
+                // Carga la vista
+                $this->load->view('templates/header', $datos);
+                $this->load->view('front_view', $datos);
+                $this->load->view('templates/footer', $datos);
+        }
+
+        // REGISTRO (parte de frontoffice)
         public function register() {
                 // Si ya está registrado, carga el index
                 if ($this->session->logged_in !== 1) {
