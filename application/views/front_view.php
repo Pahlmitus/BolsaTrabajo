@@ -48,14 +48,20 @@
                     </div>
                     <div class="offer_tags">
                         <?php
-                            setlocale(LC_ALL, "en_US.UTF-8");
+                            //setlocale(LC_ALL, "en_US.UTF-8");
                             if (isset($offer->offer_tags)) { 
                                 echo "<p>Etiquetas:&nbsp;";
                                 $tags = explode(",", $offer->offer_tags);
                                 foreach ($tags as $tag) {
                                     // Quita los acentos
                                     $tagname = iconv('UTF-8','ASCII//TRANSLIT', $tag);
-                                    // Quita los espacios
+                                        // Si al quitar los acentos se generan apóstrofes ('), los elimina también
+                                        $tagname = str_replace("'", "", $tagname);
+                                    // Quita el espacio inicial (si lo hay)
+                                    if (substr($tagname, 0, 1) === ' ') {
+                                        $tagname = substr($tagname, 1);
+                                    }
+                                    // Cambia los demás espacios por "_"
                                     $tagname = preg_replace('/\s+/', '_', $tagname);
                                     // Pasa a minúsculas y añade la url
                                     $tagname = base_url('tag/'.strtolower($tagname));

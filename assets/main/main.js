@@ -39,10 +39,25 @@ function showPass(pass) {
     passField.type === "password" ? passField.type = "text" : passField.type = "password";
 }
 
+// Buscar
 function search(base_url) {
     search_textbox = document.getElementById('search_textbox');
     query = search_textbox.value;
     fullQuery = base_url + "search/" + query;
     window.location.replace(fullQuery);
     search_textbox.value = query;
+}
+
+// Enlazar la tecla intro con "buscar"
+var search_textbox_input = document.getElementById("search_textbox");
+search_textbox_input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("search_icon").click();
+    }
+});
+
+// Mantener valor del cuadro de búsqueda
+if ((window.location.href.split('/')[4] == 'search') && window.location.href.split('/')[5]) {
+    search_textbox_input.value = window.location.href.split('/')[5];
 }
