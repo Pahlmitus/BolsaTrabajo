@@ -6,11 +6,19 @@
     </div>
     <br />
     <div id="search_conditions">
-        <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="collapse" data-target="#search_provincia">Provincia</button>
+        <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="collapse" data-target="#search_provincia">Provincias</button>
         <div id="search_provincia" class="collapse">
-            <button type="button" class="btn btn-small btn-block">Valencia</button>
-            <button type="button" class="btn btn-small btn-block">Madrid</button>
-            <button type="button" class="btn btn-small btn-block">Barcelona</button>
+            <!-- Carga dinámicamente las provincias en una lista (cambia dependiendo de los resultados) -->
+            <?php 
+                $arr = array();
+                foreach ($offers as $offer) { 
+                    array_push($arr, $offer->offer_location);
+                }
+                $arr = array_count_values($arr);
+                $arr = array_keys($arr);
+                foreach ($arr as $location) { ?>
+                <a href="<?= base_url('/location/' . $location)?>" type="button" class="btn btn-small btn-block"><?=$location?></a>
+            <?php } ?>
         </div>
         <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="collapse" data-target="#search_etiquetas">Etiquetas</button>
         <div id="search_etiquetas" class="collapse">
@@ -27,7 +35,7 @@
 </div>
 
 <div id="last_offers">
-    <h3>Últimas ofertas:</h3>
+    <?php if(isset($title)) {echo $title;} ?>
     <?php foreach($offers as $offer) { ?>
             <div class="offer">
                     <?php if (isset($offer->company_logo) && $offer->company_logo !== '') { ?>
@@ -48,15 +56,17 @@
                     </div>
                     <div class="offer_tags">
                         <?php
-                            //setlocale(LC_ALL, "en_US.UTF-8");
+                            // SI NO NO VA
+                            setlocale(LC_ALL, "es_ES.UTF-8");
+
                             if (isset($offer->offer_tags)) { 
                                 echo "<p>Etiquetas:&nbsp;";
                                 $tags = explode(",", $offer->offer_tags);
                                 foreach ($tags as $tag) {
                                     // Quita los acentos
                                     $tagname = iconv('UTF-8','ASCII//TRANSLIT', $tag);
-                                        // Si al quitar los acentos se generan apóstrofes ('), los elimina también
-                                        $tagname = str_replace("'", "", $tagname);
+                                    // Si al quitar los acentos se generan apóstrofes ('), los elimina también
+                                    $tagname = str_replace("'", "", $tagname);
                                     // Quita el espacio inicial (si lo hay)
                                     if (substr($tagname, 0, 1) === ' ') {
                                         $tagname = substr($tagname, 1);

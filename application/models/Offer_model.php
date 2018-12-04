@@ -26,6 +26,11 @@ class Offer_model extends CI_Model {
         return $query->result();
     }
 
+    public function getByLocation($location) {
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` AND `offer_location` = "' . $location . '";');
+        return $query->result();
+    }
+
     public function searchAll($search) {
         $query = $this->db->query("SELECT * FROM `offers`, `companies` WHERE (`offer_company_id` = `company_id`)
          AND (

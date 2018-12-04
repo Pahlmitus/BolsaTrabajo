@@ -68,6 +68,9 @@ $route['frontoffice/(:any)'] = 'frontoffice/$1';
     /* Mostrar por etiqueta */
     $route['tag'] = 'frontoffice/tag';
     $route['tag/(:any)'] = 'frontoffice/tag/$1';
+    /* Mostrar por provincia */
+    $route['location'] = 'frontoffice/location';
+    $route['location/(:any)'] = 'frontoffice/location/$1';
 
 // BACK
 $route['backoffice'] = 'backoffice';
