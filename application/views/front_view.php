@@ -23,11 +23,43 @@
         <button type="button" class="btn btn-light btn-lg btn-block" data-toggle="collapse" data-target="#search_etiquetas">Etiquetas</button>
         <div id="search_etiquetas" class="collapse">
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="search_tags_informatica">
-                <label class="form-check-label" for="search_tags_informatica">Informática</label>
-                <br />
-                <input type="checkbox" class="form-check-input" id="search_tags_construccion">
-                <label class="form-check-label" for="search_tags_construccion">Construcción</label>
+                <!-- Carga dinámicamente las etiquetas (cambia dependiendo de los resultados) -->
+                <?php 
+                    $arr2 = array();
+                    foreach ($offers as $offer) { 
+                        array_push($arr2, $offer->offer_tags);
+                    }
+                    $arr2 = array_count_values($arr2);
+                    $arr2 = array_keys($arr2);
+                    $arr2aux = array();
+                    foreach ($arr2 as $tagline) {
+                        // Separa las etiquetas
+                        $tags = explode(",", $tagline);
+                        foreach ($tags as $tag) {
+                            if (!in_array(str_replace(' ', '', $tag), $arr2aux)) {
+                                array_push($arr2aux, $tag);
+                            }
+                        }
+                    }
+
+                    // Muestra cada etiqueta una sola vez, en una lista
+                    foreach($arr2aux as $tag) { ?>
+                        <?php
+                            setlocale(LC_ALL, "es_ES.UTF-8");
+                            
+                            //Elimina carácteres no deseados de las etiquetas (detalles en el código más abajo)
+                            $tagname = iconv('UTF-8','ASCII//TRANSLIT', $tag);
+                            $tagname = str_replace("'", "", $tagname);
+                            if (substr($tagname, 0, 1) === ' ') {
+                                $tagname = substr($tagname, 1);
+                            }
+                            $tagname = preg_replace('/\s+/', '_', $tagname);
+                            $tagname = base_url('tag/'.strtolower($tagname));
+                        ?>
+                        <a href="<?=$tagname?>" class="badge badge-primary"><?=$tag?></a>
+                        <br />
+                    <?php } ?>
+                        
             </div>
         </div>
     </div>
@@ -36,6 +68,9 @@
 
 <div id="last_offers">
     <?php if(isset($title)) {echo $title;} ?>
+    <?php if(isset($links)) {
+        echo $links;  
+    } ?>
     <?php foreach($offers as $offer) { ?>
             <div class="offer">
                     <?php if (isset($offer->company_logo) && $offer->company_logo !== '') { ?>
@@ -86,4 +121,8 @@
                     </div>
             </div>
     <?php } ?>
+    <br />
+    <?php if(isset($links)) {
+        echo $links;  
+    } ?>
 </div>

@@ -12,7 +12,9 @@ class Admin extends CI_Controller {
                 include_once('utils.php');
         }
         public function index() {
-                $this->showAdmin();
+            //$this->showAdmin();
+            /* Arreglo temporal */
+            redirect("/admin/users", "refresh");
         }
         
         /*** GROCERY CRUDs ***/

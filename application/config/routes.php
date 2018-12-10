@@ -62,6 +62,9 @@ $route['admin/(:any)/(:any)/(:any)'] = 'admin/$1/$2/$3';
 // FRONT
 $route['frontoffice'] = 'frontoffice';
 $route['frontoffice/(:any)'] = 'frontoffice/$1';
+    /* Mostrar todas */
+    $route['all'] = 'frontoffice/all';
+    $route['all/(:any)'] = 'frontoffice/all/$1';
     /* Buscar */
     $route['search'] = 'frontoffice/search';
     $route['search/(:any)'] = 'frontoffice/search/$1';
@@ -72,8 +75,13 @@ $route['frontoffice/(:any)'] = 'frontoffice/$1';
     $route['location'] = 'frontoffice/location';
     $route['location/(:any)'] = 'frontoffice/location/$1';
 
+    /* Candidatos */
+    $route['candidates'] = 'frontoffice/candidates';
+    $route['candidates/profile'] = 'frontoffice/profile';
+    $route['candidates/profile/(:any)'] = 'frontoffice/profile/$1';
+
 // BACK
-$route['backoffice'] = 'backoffice';
+$route['perfil'] = 'backoffice';
 $route['backoffice/(:any)'] = 'backoffice/$1';
 
 // Login y logout
@@ -84,3 +92,4 @@ $route['logout'] = 'backoffice/logout';
 $route['register'] = 'frontoffice/register';
 $route['register/trabajador'] = 'backoffice/registerTrabajador';
 $route['register/empresario'] = 'backoffice/registerEmpresario';
+$route['register/empresa'] = 'backoffice/registerEmpresa';

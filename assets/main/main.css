@@ -82,11 +82,23 @@ div#navbar {
 }
 
 /* Logo principal */
-p#title {
-    color: white;
-    font-size: 2rem;
+div#title {
     margin: 0;
     padding-left: 1rem;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+div#title a:first-child {
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+div#title a {
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
 }
 
 /* Registro (botón de la cabecera) */
@@ -324,4 +336,47 @@ div#search_provincia button:last-child {
 /***** CONTENEDOR DE OFERTAS *****/
 div#last_offers {
     flex: 7;
+}
+
+
+
+/***** VISTA BACKOFFICE (usuarios) *****/
+div#back_view {
+    width: 70%;
+}
+
+/* Datos personales */
+table#datos_personales {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+table#datos_personales tr td {
+    padding: 1.5rem;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+table#datos_personales tr td:first-child {
+    font-weight: bold;
+}
+table#datos_personales tr td:last-child {
+    text-align: right;
+}
+
+/* Datos de candidato */
+table#datos_candidato {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+table#datos_candidato tr td {
+    padding: 1.5rem;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+table#datos_candidato tr td:first-child {
+    font-weight: bold;
+}
+table#datos_candidato tr td:last-child {
+    text-align: right;
 }

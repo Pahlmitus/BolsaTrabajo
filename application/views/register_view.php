@@ -4,8 +4,8 @@
                 ¿Buscas trabajo en tu sector? ¡Estás de suerte! Tenemos un montón de empresa que buscan
                 un perfil como el tuyo. ¿Cómo dices? ¿Que lo que buscas son trabajadores para tu empresa? ¡Pues
                 hoy es tu día! Cientos de usuarios se registran a diario en la <a href="<?= base_url('/'); ?>">Bolsa
-                de Trabajo</a> buscando una
-                empresa innovadora como la tuya.
+                de Trabajo</a> buscando una empresa innovadora como la tuya.
+                <!--
                 <br /><br />
                 Ambos registros te crearán un <strong>Usuario</strong> en la <a href="<?= base_url('/'); ?>">Bolsa
                 de Trabajo</a>. Si te registras como <i>Trabajador</i>, tu usuario figurará en la lista de
@@ -23,10 +23,11 @@
                 puedes poner todas las competencias, estudios, etc. que desees. Simplemente es para evitar
                 <a href="#">candidatos duplicados</a> (esto puede causar una imagen equivocada de tu persona,
                 así como errores en nuestro servidor :) ).
+                -->
         </p>
         <?php if (isset($_GET['err'])) { ?>
                 <div class="alert alert-danger" role="alert" id="register_error">
-                <b>Error:</b> El email ya está en uso. <i>¿Has olvidado tu <a href="#">contraseña</a></i>?
+                <b>Error:</b> Uno de los campos contiene un valor incorrecto. Por favor, revisa todos los campos y vuelve a intentarlo.<br />
                 </div>
         <?php } ?>
         <div id="register_options">

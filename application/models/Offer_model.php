@@ -16,14 +16,41 @@ class Offer_model extends CI_Model {
         return $query->result();
     }
 
-    public function getLastFive() {
-        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` LIMIT 5;');
+    // PAGINACIÓN
+    public function countAll() {
+        return $this->db->count_all("offers");
+    }
+    public function fetchOffers($start, $limit) {
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` LIMIT ' . $start . ',' . $limit);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+
+
+    public function getLastThree() {
+        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` LIMIT 3;');
         return $query->result();
     }
     
-    public function getByTag($tag) {
-        $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` AND `offer_tags` LIKE "%' . $tag . '%";');
-        return $query->result();
+    public function getByTag($tags) {
+        // Si hay más de una
+        if (strpos($tags, '+') !== false) {
+            $tagQuery = "";
+            $tags = explode("+", $tags);
+            foreach ($tags as $tag) {
+                $tagQuery = $tagQuery . 'AND `offer_tags` LIKE "%' . $tag . '%"';
+            }
+            $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` ' . $tagQuery);
+            return $query->result();
+        } else {
+            $query = $this->db->query('SELECT * FROM `offers`, `companies` WHERE `offer_company_id` = `company_id` AND `offer_tags` LIKE "%' . $tags . '%"');
+            return $query->result();
+        }
     }
 
     public function getByLocation($location) {

@@ -19,8 +19,6 @@
             <ul>
             <!-- Los administradores tienen acceso a las bases de datos -->
             <?php if ($this->session->userdata('user_role_id') == 1) { ?>
-                <li><a href="<?php echo site_url('/admin/'); ?>">Admin</a></li>
-                <li> | </li>
                 <li><a href="<?php echo site_url('/admin/users'); ?>">Usuarios</a></li>
                 <li> | </li>
                 <li><a href="<?php echo site_url('/admin/companies'); ?>">Empresas</a></li>
@@ -35,7 +33,7 @@
                 <li> | </li>
                 <li><a href="<?php echo site_url('/logout'); ?>">Cerrar sesión</a></li>
             <?php } else { ?>
-                <li><a href="<?php echo site_url('/backoffice'); ?>">Mi perfil</a></li>
+                <li><a href="<?php echo site_url('/perfil'); ?>">Mi perfil</a></li>
                 <li> | </li>
                 <li><a href="<?php echo site_url('/logout'); ?>">Cerrar sesión</a></li>
             <?php } ?>
@@ -45,9 +43,11 @@
 <?php } ?>
 
 <div id="navbar">
-        <a href="<?php echo site_url('/'); ?>">
-                <p id="title">Bolsa de trabajo v1.0</p>
-        </a>
+    <div id="title">
+        <a href="<?php echo site_url('/'); ?>">Bolsa de trabajo v1.0</a>
+        <a href="<?php echo site_url('/'); ?>">Ofertas</a>
+        <a href="<?php echo site_url('/candidates'); ?>">Candidatos</a>
+    </div>
 
         <!-- Formulario Login (no loggeados) -->
         <?php if ($this->session->userdata('logged_in') !== 1) { ?>
